@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* ======== HEADER ======== */
+body {
+    font-family: 'Arial', sans-serif; /* sets font for the body */
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6; /* improves readability */
+    padding: 20px; /* space around content */
+}
+
+header {
+    width: 279.4px; 
+    height: 64.4px;
+    position: relative;
+    border-style: solid; /* border around header */
+    border-color: #000000; /* border color */
+    border-width: 4px;  /* border width */
+    background: #f4f4f4; 
+    color: #000000;
+    padding: 10px 0; /* padding inside header */
+    text-align: center; /* centers text inside */
+    margin: 0 auto;  /* centers it */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+
+
+.rectangle {
+    width: 100%;
+    height: 50px;
+    background-color: #000b3d;
+    border-radius: 12px;
+}
+
+.rectangle nav a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 10px;
+    background-image: #000b3d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.15s ease; /* smooth hover effect */
+    
+}
+.rectangle nav a:hover {
+    background-color: #00008b; /* darker shade on hover */
+    transform: translateY(-2px); /* slight upward movement on hover */
+}
+
+.rectangle nav a:active {
+    transform: translateY(0); /* slight downward movement on click */
+}
+/* ======== HERO SECTION ======== */
+   
+
+
+.hero {
+    margin-top: 2%;
+    background-image: url("Chef.jpg"); /* Replace with your image path */
+    background-size: cover;/* Ensures the image covers the section */
+    background-position: center; /* Centers the image */
+    height: 800px;
+    width: 100%;
+    position: relative;
+
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 600px) {
+    header {
+        width: 90%; /* Adjust header width for smaller screens */
+    }
+}
