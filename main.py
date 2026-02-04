@@ -3,7 +3,7 @@ import sqlite3
 def main_menu():
     print("Food INC staff system")
     try:
-        choice = int(input("1. View Current reciepts \n2. Monitor Stock"))
+        choice = int(input("1. View Current reciepts \n2. Monitor Stock \n >"))
         match choice:
             case 1:
                 print("Current reciepts")
@@ -14,4 +14,4 @@ def main_menu():
                 main_menu()
     except Exception as e:
         print("error:", e)
-        main_menu()
+main_menu()
