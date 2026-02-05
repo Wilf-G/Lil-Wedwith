@@ -112,8 +112,9 @@ header {
 }
 
 .box {
+    text-align: center;
     margin: 0 auto;
-    width: 1011px;
+    width: 100%;
     position: relative; 
     border-radius: 20px;
     padding: 20px;
@@ -173,4 +174,17 @@ header {
     header {
         width: 90%; /* Adjust header width for smaller screens */
     }
+    .rectangle nav a {
+        padding: 6px 12px; /* Adjust padding for smaller screens */
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    .hero {
+        height: 400px; /* Adjust hero height for smaller screens */
+    }
+
+    .content {
+        padding: 10px; /* Adjust content padding for smaller screens */
+    }
+
 }
