@@ -169,6 +169,8 @@ header {
     inset: 0; /* Covers the entire image */
     background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
 }
+
+
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
     header {
