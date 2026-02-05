@@ -80,7 +80,7 @@ header {
 .hero::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: 0; /* Covers the entire hero section */
     background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
 }
 
@@ -154,15 +154,19 @@ header {
 }
 
 .About_Us_Image {
-    margin: 0 auto;
-    width: 200px;
-    position: relative; 
-    border-radius: 20px;
-    padding: 8px 16px;
-    margin-bottom: 20px;
-    color: #f4f4f4;
-    background-color: rgba(255, 49, 49, 0.8); /* Semi-transparent red background */
-    margin-top: 30px;
+    margin-top: 2%;
+    background-image: url("About_Us_Image.jpg"); /* Replace with your image path */
+    background-size: cover;/* Ensures the image covers the section */
+    background-position: center; /* Centers the image */
+    height: 800px;
+    width: 100%;
+    position:relative;
+}
+.About_Us_Image::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Covers the entire image */
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
 }
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
