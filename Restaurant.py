@@ -34,8 +34,6 @@ def ManageStock():
 
 def NewOrder():
     global orderNumber
-    #Allow for entering details here 
-    
     print("Would you like to add new items to the order? (y/n)")
     choice = input("> ")
     while choice == "y":
@@ -98,6 +96,7 @@ def Login():
         Login()
         
 Login()
+
 
 
 
