@@ -83,10 +83,10 @@ def Login():
     password = input("> ")
 
     #if username is not found in dict user_accounts
-    if(username not in user_accounts):
+    if(username not in LoginDetails):
         print("User not found!")
     #elif password is equal to the pass found at username
-    elif(password == user_accounts[username]):
+    elif(password == LoginDetails[username]):
         print("Log in successful")
         time.sleep(1)
         Menu()
@@ -96,4 +96,5 @@ def Login():
         Login()
         
 Login()
+
 
