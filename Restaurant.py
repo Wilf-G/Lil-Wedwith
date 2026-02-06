@@ -1,8 +1,9 @@
 import time
-import pandas as pd
+import pandas as pd # If we need to use pandas to check database 
+import sqlite3 #Otherwise we will use SQLite
 
 #Menu system for python application
-stock = pd.read_csv("", "w")
+stock = pd.read_csv("", "w") #Call database using pandas but no database yet (Maybe given)
 
 orderNumber = 0
 itemsOrdered = []
@@ -33,7 +34,8 @@ def ManageStock():
 
 def NewOrder():
     global orderNumber
-
+    #Allow for entering details here 
+    
     print("Would you like to add new items to the order? (y/n)")
     choice = input("> ")
     while choice == "y":
@@ -96,5 +98,6 @@ def Login():
         Login()
         
 Login()
+
 
 
