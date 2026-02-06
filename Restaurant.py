@@ -2,11 +2,13 @@ import time
 import pandas as pd
 
 #Menu system for python application
-
 stock = pd.read_csv("", "w")
 
 orderNumber = 0
 itemsOrdered = []
+LoginDetails= {
+    "Username": "Password"
+}
 
 def OutputReceipt():
     print("================================")
@@ -51,7 +53,6 @@ def SearchOrder():
 
     #Output order here
 
-
 def Menu():
     print("Menu")
     print("1. Output receipt")
@@ -75,4 +76,22 @@ def Menu():
         case _:
             print("Invalid input, please try again")#
             time.sleep(1)
+def Login():
+    print("Enter username:")
+    username = input("> ")
+    print("Enter password")
+    password = input("> ")
+
+    #if username is not found in dict user_accounts
+    if(username not in user_accounts):
+        print("User not found!")
+    #elif password is equal to the pass found at username
+    elif(password == user_accounts[username]):
+        print("Log in successful")
+        time.sleep(1)
+        Menu()
+    #if password is incorrect
+    else:
+        print("Password Incorrect!")
+        
 Menu()
