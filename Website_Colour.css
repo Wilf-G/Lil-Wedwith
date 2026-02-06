@@ -156,7 +156,6 @@ header {
 
 .About_Us_Image {
     margin-top: 2%;
-    background-image: url("About_Us_Image.jpg"); /* Replace with your image path */
     background-size: cover;/* Ensures the image covers the section */
     background-position: center; /* Centers the image */
     height: 800px;
