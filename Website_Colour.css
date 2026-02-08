@@ -209,21 +209,30 @@ header {
 
 .Menu_Items {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    flex-wrap: wrap; /* allows items to wrap to the next line on small screens */
+    justify-content: flex-start; /* start items on the left so margin-left: auto works */
+    gap: 20px; /* space between items */
     margin-top: 20px;
-    background-position: center;
 }
 
+/* Parent container for menu items */
+.Menu_Items {
+    display: flex;
+    flex-wrap: wrap;         /* allows items to wrap to next row if needed */
+    justify-content: flex-start; /* start items on the left so margin-left: auto works */
+    gap: 20px;               /* spacing between items */
+    margin-top: 20px;
+}
+
+/* Each menu item */
 .Menu_Item {
-    margin-top: 2%;
-    margin-right: 10px;
     background-color: #000b3d;
     color: #f4f4f4;
     border-radius: 20px;
     padding: 20px;
-    width: 30%;
+    width: 30%;              /* roughly 3 items per row on desktop */
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .Menu_Item img {
@@ -231,7 +240,6 @@ header {
     height: auto; 
     border-radius: 10px;
     margin-bottom: 10px;
-
 }
 
 .Menu_Item h3 {
@@ -246,7 +254,11 @@ header {
     color: #f4f4f4;
 }
 
-
+/* Second item pushed to the far right */
+.Menu_Items .Menu_Item:nth-child(2) {
+    background-color:#000b3d ; /* Different shade */
+    margin-left: auto;         /* pushes this item to the right */
+}
 
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
