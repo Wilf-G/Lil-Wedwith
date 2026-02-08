@@ -207,7 +207,12 @@ header {
     max-width: 80%; /* Limits the width of the text for better readability */
 }
 
-
+.Menu_Items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    margin-top: 20px;
+}
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
     header {
