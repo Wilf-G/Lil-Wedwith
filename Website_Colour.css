@@ -212,6 +212,7 @@ header {
     justify-content: space-around;
     flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
     margin-top: 20px;
+    background-position: center;
 }
 
 .Menu_Item {
@@ -230,8 +231,6 @@ header {
     height: auto; 
     border-radius: 10px;
     margin-bottom: 10px;
-    object-position: center;
-    object-fit: cover;
 
 }
 
@@ -246,6 +245,8 @@ header {
     line-height: 1.6;
     color: #f4f4f4;
 }
+
+
 
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
