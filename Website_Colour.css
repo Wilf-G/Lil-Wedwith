@@ -42,12 +42,12 @@ header {
 }
 
 .rectangle nav a {
-    display: inline-block;
+    display: inline-block; 
     padding: 8px 16px;
-    margin-right: 10px;
+    margin-right: 10px; 
     background-image: #000b3d;
     color: white;
-    text-decoration: none;
+    text-decoration: none; 
     border-radius: 5px;
     font-size: 20px;
     font-weight: bold;
@@ -85,7 +85,7 @@ header {
 .hero img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; 
     object-position: center;
     display: block;
 }
@@ -213,6 +213,34 @@ header {
     flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
     margin-top: 20px;
 }
+
+.Menu_Item {
+    margin-top: 2%;
+    margin-right: 10px;
+    background-color: #000b3d;
+    color: #f4f4f4;
+    border-radius: 20px;
+    padding: 20px;
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.Menu_Item img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-position: center;
+    object-fit: cover;
+
+}
+
+.Menu_Item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
     header {
