@@ -241,6 +241,12 @@ header {
     line-height: 1.6;
 }
 
+.Menu_Item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #f4f4f4;
+}
+
 /* ======== RESPONSIVE ======== */
 @media (max-width: 600px) {
     header {
