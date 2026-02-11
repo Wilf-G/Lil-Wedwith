@@ -138,7 +138,7 @@ header {
     padding: 20px;
     margin-bottom: 20px;
     color: #f4f4f4;
-    background-color: rgba(47, 58, 90, 0.8); /* Semi-transparent dark blue background */
+    background-color: rgb(120, 0, 0);
     margin-top: 30px;
 }
 
@@ -257,7 +257,7 @@ header {
 /* Second item pushed to the far right */
 .Menu_Items .Menu_Item:nth-child(2) {
     background-color:#000b3d ; /* Different shade */
-    margin-left: auto;         /* pushes this item to the right */
+    margin-right: auto; /* Pushes the second item to the far right */
 }
 
 /* ======== RESPONSIVE ======== */
