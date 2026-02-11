@@ -257,12 +257,12 @@ header {
 /* Second item pushed to the far right */
 .Menu_Items .Menu_Item:nth-child(2) {
     background-color:#000b3d ; /* Different shade */
-    margin-right: auto; /* Pushes the second item to the far right */
+    margin-left: auto; /* Pushes the second item to the far right */
 }
 
 .Menu_Items .Menu_Item:nth-child(3) {
     background-color: #000b3d; /* Different shade */
-    margin-right: auto; /* Pushes the third item to the far right */
+    margin-left: auto; /* Pushes the third item to the far right */
 }
 
 
