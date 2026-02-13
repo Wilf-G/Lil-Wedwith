@@ -11,18 +11,33 @@ LoginDetails= {
     "Username": "Password"
 }
 
+def ItemStock():
+    print("What item would you like to view?")
+    item = input("> ")
+    #Need a check here probably using sqlite or pandas in order to check if the item they are looking for is in the database
+    #if item in (database):
+        #print() (Use sqlite in order to get the stock of items printed)
+    #else:
+        #print("That item is unavailable, try looking for something else")
+        #ItemStock()
+
 def OutputReceipt():
-    print("================================")
-    print("orderNumber")
-    print("================================")
+    print("################################")
+    print(f"========={orderNumber}=========")
+    print("################################")
     print("")
-    print("itemsOrdered")
+    for i in itemsOrdered:
+        print(i)
+    
     itemsOrdered.clear()
+    time.sleep(2)
+    Menu()
 
 def ManageStock():
     print("What would you like to do?")
     print("1. view stock of an item")
     print("2. View all stock")
+    time.sleep(1)
     choice = int(input(""))
     if choice ==  1:
         print("ItemStock")
@@ -42,7 +57,7 @@ def NewOrder():
         itemsOrdered.append(item)
         choice = input("Would you like to add new items to the order? (y/n)")
     print("Order added")
-    #Input for what to add here
+    Menu()
 
 #Maybe make orders into a text file so you can search for specific orders would have to change when adding new order
 def SearchOrder():
@@ -82,12 +97,12 @@ def Login():
     print("Enter password")
     password = input("> ")
 
-    #if username is not found in dict user_accounts
+    #if username is not found in dict loginDetails
     if(username not in LoginDetails):
         print("User not found!")
-    #elif password is equal to the pass found at username
+    #elif password is equal to the password found at username
     elif(password == LoginDetails[username]):
-        print("Log in successful")
+        print("Log in successful!")
         time.sleep(1)
         Menu()
     #if password is incorrect
@@ -96,6 +111,7 @@ def Login():
         Login()
         
 Login()
+
 
 
 
