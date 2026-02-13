@@ -54,14 +54,18 @@ header {
     transition: background-color 0.2s ease, transform 0.15s ease; /* smooth hover effect */
     
 }
+
+
 .rectangle nav a:hover {
     background-color: #00008b; /* darker shade on hover */
     transform: translateY(-2px); /* slight upward movement on hover */
 }
 
+
 .rectangle nav a:active {
     transform: translateY(0); /* slight downward movement on click */
 }
+
 /* ======== HERO SECTION ======== */
    
 
