@@ -96,9 +96,9 @@ header {
 
 .hero-text {
     position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* Position the text in the center of the hero section */
+    left: 50%; /* Position the text in the center of the hero section */
+    transform: translate(-50%, -50%); /* Centers the text */
     color: #f4f4f4;
     font-size: 36px;
     font-weight: bold;
