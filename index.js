@@ -1,0 +1,1 @@
+window.alert("Hello, World! This is a simple JavaScript alert.");
