@@ -21,18 +21,20 @@ def ItemStock():
         #print("That item is unavailable, try looking for something else")
         #ItemStock()
 
+#Outputs the order in a receipt format with the items in the order
 def OutputReceipt():
     print("################################")
-    print(f"========={orderNumber}=========")
+    print(f"=========0{orderNumber}=========")
     print("################################")
     print("")
-    for i in itemsOrdered:
-        print(i)
+    for i in range(0, itemsOrdered):
+        print(itemsOrdered[i])
     
     itemsOrdered.clear()
     time.sleep(2)
     Menu()
 
+# Allows the user to view the stock in a database, alowing them to view one item's stock or all stock
 def ManageStock():
     print("What would you like to do?")
     print("1. view stock of an item")
@@ -40,13 +42,16 @@ def ManageStock():
     time.sleep(1)
     choice = int(input(""))
     if choice ==  1:
+        # Different function for viewing an item's stock. Not made the function yet
         print("ItemStock")
     elif choice == 2:
+        # Different function for viewing an item's stock. Not made the function yet
         print("AllStock")
     else:
         print("Invalid input, please try again")
         ManageStock()
 
+# Allows the user to add a new  order, inputting which item they would like to add and how many items they will be adding, also gives the order a number
 def NewOrder():
     global orderNumber
     print("Would you like to add new items to the order? (y/n)")
@@ -63,11 +68,15 @@ def NewOrder():
 def SearchOrder():
     print("Enter order to search for")
     order = input("> ") #If orders are saved as a text file the user can enter the order with file extension
-    
-    #Input for what order they are searching for here
+    # Check if order is real (Depends on how orders will be saved to check if orders are there)
+    # If order is real, print the order
+    #Ask user if they would like to search for a new order
+    #If not go back to menu, if they do go back into function
 
+    #Else output the order isn't there and loop back into function
     #Output order here
 
+#Menu function allowing users to select what they would like to do
 def Menu():
     print("Menu")
     print("1. Output receipt")
@@ -91,6 +100,8 @@ def Menu():
         case _:
             print("Invalid input, please try again")#
             time.sleep(1)
+
+#Function for a log in system. Need to add new users and passwords into the dictionary at the top of the program
 def Login():
     print("Enter username:")
     username = input("> ")
@@ -111,6 +122,7 @@ def Login():
         Login()
         
 Login()
+
 
 
 
