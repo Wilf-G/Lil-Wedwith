@@ -1,9 +1,7 @@
-import time
-import pandas as pd # If we need to use pandas to check database 
+import time, os
 import sqlite3 #Otherwise we will use SQLite
 
-#Menu system for python application
-stock = pd.read_csv("", "w") #Call database using pandas but no database yet (Maybe given)
+
 
 orderNumber = 0
 itemsOrdered = []
@@ -14,7 +12,7 @@ LoginDetails= {
 def ItemStock():
     print("What item would you like to view?")
     item = input("> ")
-    #Need a check here probably using sqlite or pandas in order to check if the item they are looking for is in the database
+    #Need a check here probably using sqlite in order to check if the item they are looking for is in the database
     #if item in (database):
         #print() (Use sqlite in order to get the stock of items printed)
     #else:
@@ -68,13 +66,32 @@ def NewOrder():
 def SearchOrder():
     print("Enter order to search for")
     order = input("> ") #If orders are saved as a text file the user can enter the order with file extension
-    # Check if order is real (Depends on how orders will be saved to check if orders are there)
-    # If order is real, print the order
-    #Ask user if they would like to search for a new order
-    #If not go back to menu, if they do go back into function
+    files = os.listdir(".")
+    txt_files = [ f for f in files if f.endswith(".order")]
 
-    #Else output the order isn't there and loop back into function
-    #Output order here
+    if txt_files:
+        print("Save files found:")
+        for f in txt_files:
+            print(f)
+    else:
+        print("No save files found in this folder.")
+        Menu()
+
+    saveName = input("Enter the name of your save file (without .order): ")
+    saveName += ".order"
+
+    if not os.path.exists(saveName):
+        print("Save file not found!")
+        return Menu()
+    
+    with open(saveName, "r") as file:
+        lines = file.readlines()
+        print(lines)
+
+        petName = lines[0].split(":")[1].strip()
+
+    print(f"{petName} loaded!")
+    Menu()
 
 #Menu function allowing users to select what they would like to do
 def Menu():
@@ -98,7 +115,7 @@ def Menu():
             itemsOrdered.clear()
             exit()
         case _:
-            print("Invalid input, please try again")#
+            print("Invalid input, please try again")
             time.sleep(1)
 
 #Function for a log in system. Need to add new users and passwords into the dictionary at the top of the program
@@ -122,6 +139,7 @@ def Login():
         Login()
         
 Login()
+
 
 
 
