@@ -296,8 +296,68 @@ header {
         height: 400px; /* Adjust hero height for smaller screens */
     }
 
+.checkout-options {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.option-box {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.option-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4c4c;
+}    
+
     .content {
         padding: 10px; /* Adjust content padding for smaller screens */
     }
+
 
 }
