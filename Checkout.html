@@ -6,61 +6,65 @@
     <title>Checkout</title>
     <link rel="stylesheet" href="Website_Colour.css">
 </head>
+
+<body>
+
     <header>
         <h1>Food Inc.</h1>
     </header>
 
-<section class ="rectangle">
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="About_Us.html">About Us</a>
-            <a href="Get_Started.html">Get Started</a>
-            <a href="Contact_Us.html">Contact Us</a>
-            <a href="Checkout.html" >Checkout</a>
+    <section class="rectangle">
+        
+        <nav>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="About_Us.html">About Us</a>
+                <a href="Get_Started.html">Get Started</a>
+                <a href="Contact_Us.html">Contact Us</a>
+                <a href="Checkout.html">Checkout</a>
+            </div>
+        </nav>
+
+        <div class="checkout-options">
+
+            <div class="option-box">
+                <h2>Delivery to Home</h2>
+                <form>
+                    <label>Full Name</label>
+                    <input type="text" required>
+
+                    <label>Address</label>
+                    <input type="text" required>
+
+                    <label>Postcode</label>
+                    <input type="text" required>
+
+                    <label>Phone Number</label>
+                    <input type="tel" required>
+
+                    <button type="submit">Order Delivery</button>
+                </form>
+            </div>
+
+            <div class="option-box">
+                <h2>Table Service</h2>
+                <form>
+                    <label>Full Name</label>
+                    <input type="text" required>
+
+                    <label>Table Number</label>
+                    <input type="number" required>
+
+                    <label>Number of Guests</label>
+                    <input type="number" required>
+
+                    <button type="submit">Order to Table</button>
+                </form>
+            </div>
+
         </div>
 
-    </nav>
+    </section>
 
-    <div class="checkout-options">
-
-    <div class="option-box">
-        <h2>Delivery to home</h2>
-        <form>
-            <label>Full Name</label>
-            <input type="text" required>
-
-            <label>Address</label>
-            <input type="text" required>
-
-            <label>Postcode</label>
-            <input type="text" required>
-
-            <label>Phone Number</label>
-            <input type="tel" required>
-
-            <button type="submit">Order Delivery</button>
-        </form>
-    </div>
-
-    <div class="option-box">
-        <h2>Table Service</h2>
-        <form>
-            <label>Full Name</label>
-            <input type="text" required>
-
-            <label>Table Number</label>
-            <input type="number" required>
-
-            <label>Number of Guests</label>
-            <input type="number" required>
-
-            <button type="submit">Order to Table</button>
-        </form>
-    </div>
-
-</div>
-<body>
-    
 </body>
 </html>
