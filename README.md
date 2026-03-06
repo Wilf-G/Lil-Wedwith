@@ -25,7 +25,7 @@ Task Delegation:
 -Wilf: High fidelity wireframes 
 -Liam: Python UX Flowchart 
 -ChiChi: HTML framework + asset sourcing
--We also made a flowchart to represent the UX of our Python system, which will allow staff to view and modify stock in accordance with orders made by customers. This included function names, which will later be developed, in a top-down development approach. 
+-The flowchart was made to represent the UX of our Python system, which will allow staff to view and modify stock in accordance with orders made by customers. This included function names, which will later be developed, in a top-down development approach. 
 
 Development phase:
 
