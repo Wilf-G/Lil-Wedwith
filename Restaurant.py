@@ -25,7 +25,7 @@ def OutputReceipt():
     print(f"=========0{orderNumber}=========")
     print("################################")
     print("")
-    for i in range(0, itemsOrdered):
+    for i in range(0, len(itemsOrdered)):
         print(itemsOrdered[i])
     
     itemsOrdered.clear()
@@ -139,6 +139,7 @@ def Login():
         Login()
         
 Login()
+
 
 
 
