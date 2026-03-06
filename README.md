@@ -21,6 +21,10 @@ Planning phase:
 
 -We created a planning document, Including 4 sets of High-Fidelity wireframes, to represent the layout of the front-facing HTML application. These also included elements of responsive design, with a draft of a mobile-style layout, to allow the site to be used regardless of which devices the customers will have available. 
 
+Task Delegation:
+-Wilf: High fidelity wireframes 
+-Liam: Python UX Flowchart 
+-ChiChi: HTML framework + asset sourcing
 -We also made a flowchart to represent the UX of our Python system, which will allow staff to view and modify stock in accordance with orders made by customers. This included function names, which will later be developed, in a top-down development approach. 
 
 Development phase:
