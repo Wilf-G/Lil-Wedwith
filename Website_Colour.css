@@ -211,13 +211,6 @@ header {
     max-width: 80%; /* Limits the width of the text for better readability */
 }
 
-.Menu_Items {
-    display: flex;
-    flex-wrap: wrap; /* allows items to wrap to the next line on small screens */
-    justify-content: flex-start; /* start items on the left so margin-left: auto works */
-    gap: 20px; /* space between items */
-    margin-top: 20px;
-}
 
 /* Parent container for menu items */
 .Menu_Items {
