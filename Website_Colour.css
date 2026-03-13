@@ -298,7 +298,7 @@ header {
 }
 
 .homedelivery {
-    color: #ff4c4c;
+    color: #ff4c4c !important;
 }
 .option-box {
     background-color: #b1bdffe8;
