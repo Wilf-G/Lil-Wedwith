@@ -1,6 +1,7 @@
 import time, os
 import sqlite3 #Otherwise we will use SQLite
-
+import tkinter as tk
+from tkinter import messagebox
 
 
 orderNumber = 0
@@ -140,6 +141,10 @@ def Login():
         
 Login()
 
+root = tk.Tk()
+root.title("Employee Menu")
+root.geometry("300x200")
+root.mainloop()
 
 
 
