@@ -28,5 +28,5 @@ Task Delegation:
 -The flowchart was made to represent the UX of our Python system, which will allow staff to view and modify stock in accordance with orders made by customers. This included function names, which will later be developed, in a top-down development approach. 
 
 Development phase:
-
+- So far during the development phase I have created different functions in the python application to allow for a log in system in order to access the menu page where employees' usernames and passwords can be added when more employees are able to use it. Additionally, a menu page has been created allowing for the user to select what they want to do being check the stock, output a receipt, add a new order and also view existing orders. 
 
