@@ -297,7 +297,7 @@ header {
     flex-wrap: wrap;
 }
 
-#homedelivery {
+.checkout-options h2 {
     color: #ff4c4c;
 }
 .option-box {
