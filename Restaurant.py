@@ -1,24 +1,25 @@
 import time, os
-import sqlite3 #Otherwise we will use SQLite
-import tkinter as tk
-from tkinter import messagebox
+import pandas as pd
 
+df = pd.read_csv("stock_inventory.csv")
 
 orderNumber = 0
 itemsOrdered = []
 LoginDetails= {
-    "Username": "Password"
+    "Username" : "Password"
 }
 
 def ItemStock():
     print("What item would you like to view?")
     item = input("> ")
-    #Need a check here probably using sqlite in order to check if the item they are looking for is in the database
-    #if item in (database):
-        #print() (Use sqlite in order to get the stock of items printed)
-    #else:
-        #print("That item is unavailable, try looking for something else")
-        #ItemStock()
+    if item in df["ItemName"]:
+        print(df[df["Quantity"] == df[item]]) 
+    else:
+        print("That item is unavailable, try looking for something else")
+        ItemStock()
+
+def AllStock():
+    print("stock_inventory")
 
 #Outputs the order in a receipt format with the items in the order
 def OutputReceipt():
@@ -42,10 +43,10 @@ def ManageStock():
     choice = int(input(""))
     if choice ==  1:
         # Different function for viewing an item's stock. Not made the function yet
-        print("ItemStock")
+        ItemStock()
     elif choice == 2:
         # Different function for viewing an item's stock. Not made the function yet
-        print("AllStock")
+        AllStock()
     else:
         print("Invalid input, please try again")
         ManageStock()
@@ -65,8 +66,6 @@ def NewOrder():
 
 #Maybe make orders into a text file so you can search for specific orders would have to change when adding new order
 def SearchOrder():
-    print("Enter order to search for")
-    order = input("> ") #If orders are saved as a text file the user can enter the order with file extension
     files = os.listdir(".")
     txt_files = [ f for f in files if f.endswith(".order")]
 
@@ -78,7 +77,7 @@ def SearchOrder():
         print("No save files found in this folder.")
         Menu()
 
-    saveName = input("Enter the name of your save file (without .order): ")
+    saveName = input("Enter the name of the order you are looking for (without .order): ")
     saveName += ".order"
 
     if not os.path.exists(saveName):
@@ -89,9 +88,9 @@ def SearchOrder():
         lines = file.readlines()
         print(lines)
 
-        petName = lines[0].split(":")[1].strip()
+        orderName = lines[0].split(":")[1].strip()
 
-    print(f"{petName} loaded!")
+    print(f"{orderName} loaded!")
     Menu()
 
 #Menu function allowing users to select what they would like to do
@@ -121,10 +120,8 @@ def Menu():
 
 #Function for a log in system. Need to add new users and passwords into the dictionary at the top of the program
 def Login():
-    print("Enter username:")
-    username = input("> ")
-    print("Enter password")
-    password = input("> ")
+    username = input("Enter username: ")
+    password = input("Enter password: ")
 
     #if username is not found in dict loginDetails
     if(username not in LoginDetails):
