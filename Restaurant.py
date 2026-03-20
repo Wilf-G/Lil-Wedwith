@@ -126,6 +126,7 @@ def Login():
     #if username is not found in dict loginDetails
     if(username not in LoginDetails):
         print("User not found!")
+        Login()
     #elif password is equal to the password found at username
     elif(password == LoginDetails[username]):
         print("Log in successful!")
