@@ -34,7 +34,7 @@ def OutputReceipt():
     time.sleep(2)
     Menu()
 
-# Allows the user to view the stock in a database, alowing them to view one item's stock or all stock
+# Allows the user to view the stock in a database, allowing them to view one item's stock or all stock
 def ManageStock():
     print("What would you like to do?")
     print("1. view stock of an item")
