@@ -279,7 +279,7 @@ header {
 }
 
 /* ======== RESPONSIVE ======== */
-@media (max-width: 600px) {
+@media (max-width: 2140px) {
     header {
         width: 90%; /* Adjust header width for smaller screens */
     }
@@ -300,9 +300,6 @@ header {
     flex-wrap: wrap;
 }
 
-#H2Id {
-    color: #ff4c4c !important;
-}
 .option-box {
     background-color: #b1bdffe8;
     width: 400px;
@@ -320,7 +317,6 @@ header {
 .option-box h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: red;
 }
 
 form {
