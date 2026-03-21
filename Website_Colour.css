@@ -357,6 +357,13 @@ button:hover {
     }
 
 .Contact_details{
-    
+    background-color: #b1bdffe8;
+    width: 400px;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto; /* Center the contact details */
+    margin-top: 90px;
 }
 
