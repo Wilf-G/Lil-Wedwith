@@ -352,10 +352,6 @@ button:hover {
     background-color: #ff4c4c;
 }    
 
-    .content {
-        padding: 10px; /* Adjust content padding for smaller screens */
-    }
-
 .Contact_details{
     background-color: #b1bdffe8;
     width: 400px;
