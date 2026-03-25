@@ -352,14 +352,112 @@ button:hover {
     background-color: #ff4c4c;
 }    
 
-.Contact_details{
-    background-color: #b1bdffe8;
-    width: 900px;
-    padding: 50px;
-    border-radius: 5px;
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 auto; /* Center the contact details */
-    margin-top: 90px;
+/* --- Fix: Remove blue background from Contact Heading --- */
+.Contact_details h1 {
+    background: transparent;
+    color: #000b3d;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
 }
+
+/* --- Container Fixes --- */
+.Contact_details {
+    background-color: #ffffff; /* Changed from blue to white for a cleaner look */
+    width: 90%;
+    max-width: 900px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 50px auto;
+}
+
+.Main-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* --- Video Styling --- */
+.video-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.video-container h2 {
+    margin-bottom: 15px;
+    color: #000b3d;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    border: 2px solid #000b3d;
+}
+
+/* --- Simple CSS Carousel --- */
+.carousel {
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel h2 {
+    margin-bottom: 15px;
+    color: #000b3d;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Allows scrolling on mobile */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.carousel-track img {
+    flex: 0 0 auto;
+    width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for the City Names under images */
+.carousel-track figure {
+    margin: 0;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.carousel-track figcaption {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000b3d;
+    font-size: 16px;
+}
+
+/* Ensure the images stay the same size */
+.carousel-track img {
+    display: block;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Scrollbar styling for the carousel */
+.carousel-track::-webkit-scrollbar {
+    height: 8px;
+}
+.carousel-track::-webkit-scrollbar-thumb {
+    background: #000b3d;
+    border-radius: 10px;
+}
+
+
 
