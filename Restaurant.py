@@ -3,12 +3,15 @@ import pandas as pd
 
 df = pd.read_csv("stock_inventory.csv")
 
-orderNumber = 0
-itemsOrdered = []
+orderNumber = 0 #Global variable to store order number when making multiple
+itemsOrdered = [] # array to store the items ordered so they can be outputted when outputting a receipt
+
+#Login details that needs to be added to for multiple users
 LoginDetails= {
     "Username" : "Password"
 }
 
+#Function that allows the user to view the stock of a certain item
 def ItemStock():
     print("What item would you like to view?")
     item = input("> ")
@@ -18,6 +21,7 @@ def ItemStock():
         print("That item is unavailable, try looking for something else")
         ItemStock()
 
+#Function to view the whole inventory stock 
 def AllStock():
     print("stock_inventory")
 
