@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href = "{{url_for('static',filename= 'css/Website_Colour.css')}}" >
+</head>
+<body>
+    <section class ="rectangle">
+        <nav>
+            <div>
+                <a href="{{url_for('index')}}">Home</a>
+                <a href="{{url_for('aboutus')}}">About Us</a>
+                <a href="{{url_for('getstarted')}}">Get Started</a>
+                <a href="{{url_for('contactus')}}">Contact Us</a>
+                <a href="{{url_for('checkout')}}" >Checkout</a>
+            </div>
+
+        </nav>
+
+    </section>
+
+    {% block content%}
+    {% endblock %}
+
+    <footer>
+        <section class="Footer">
+        <p>&copy; 2024 Food Inc. All rights reserved.</p>
+        </section>
+    </footer>   
+</body>
+</html>

@@ -1,17 +1,32 @@
-import sqlite3
+from flask import Flask, render_template
 
-def main_menu():
-    print("Food INC staff system")
-    try:
-        choice = int(input("1. View Current receipts \n2. Monitor Stock \n >"))
-        match choice:
-            case 1:
-                print("Current receipts")
-            case 2:
-                print("Current stock")
-            case _:
-                print("Invalid choice")
-                main_menu()
-    except Exception as e:
-        print("error:", e)
-main_menu()
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/aboutus")
+def aboutus():
+    return render_template("About_Us.html")
+
+@app.route("/getstarted")
+def getstarted():
+    return render_template("Get_Started.html")
+
+
+
+@app.route("/contactus")
+def contactus():
+    return render_template("Contact_Us.html")
+
+@app.route("/checkout")
+def checkout():
+    return render_template("Checkout.html")
+
+
+app.run(debug=True)
+
+

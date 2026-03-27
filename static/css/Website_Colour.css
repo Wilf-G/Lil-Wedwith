@@ -1,0 +1,667 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* ======== HEADER ======== */
+body {
+    font-family: 'Arial', sans-serif; /* sets font for the body */
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6; /* improves readability */
+    padding: 20px; /* space around content */
+}
+
+header {
+    width: 190px; 
+    height: 64.4px;
+    position: relative;
+    border-style: solid; /* border around header */
+    border-color: #000000; /* border color */
+    border-width: 4px;  /* border width */
+    background: #f4f4f4; 
+    color: #000000;
+    padding: 10px 0; /* padding inside header */
+    text-align: center; /* centers text inside */
+    margin: 0 auto;  /* centers it */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+
+
+.rectangle {
+    width: 100%;
+    height: 50px;
+    background-color: #000b3d;
+    border-radius: 12px;
+}
+
+.rectangle nav a {
+    display: inline-block; 
+    padding: 8px 16px;
+    margin-right: 10px; 
+    background-image: #000b3d;
+    color: white;
+    text-decoration: none; 
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.15s ease; /* smooth hover effect */
+    
+}
+
+
+.rectangle nav a:hover {
+    background-color: #00008b; /* darker shade on hover */
+    transform: translateY(-2px); /* slight upward movement on hover */
+}
+
+
+.rectangle nav a:active {
+    transform: translateY(0); /* slight downward movement on click */
+}
+
+/* ======== HERO SECTION ======== */
+   
+
+.hero {
+    margin-top: 2%;
+    position: relative;
+    height: 800px;
+    width: 100%;
+    overflow: hidden; /* Ensures the image doesn't overflow the hero section */ 
+}
+
+.hero::before {
+    content: "";
+    position: absolute; 
+    inset: 0; /* Covers the entire hero section */
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* Ensures the overlay is above the image but below the text */
+}
+
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the hero section without distortion */
+    object-position: center; /* Ensures the image covers the hero section without distortion and is centered */
+    display: block;
+}
+
+.hero-text {
+    position: absolute; 
+    top: 50%; /* Position the text in the center of the hero section */
+    left: 50%; /* Position the text in the center of the hero section */
+    transform: translate(-50%, -50%); /* Centers the text */
+    color: #f4f4f4;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* Ensures text is above the overlay */
+}   
+
+.content {
+    position: relative;
+    z-index: 1; /* Ensures content is above the overlay */
+    padding: 20px;
+    max-width: auto;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.content h2 {
+    background: #000b3d;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #f4f4f4;
+}
+
+.content p {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6; 
+}
+
+.box {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    position: relative; 
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #f4f4f4;
+    background-color: rgb(120, 0, 0);
+    margin-top: 30px;
+}
+
+.box h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.box p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.Menu {
+    margin: 0 auto;
+    width: 80%;
+    position: relative; 
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    color: #f4f4f4;
+    background-color: rgb(120, 0, 0);
+    margin-top: 30px;
+}
+
+.Menu h2 {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.6;
+}
+
+.About_Us_Image {
+    margin-top: 2%;
+    position:relative;
+    height: 1969px;
+    width: 100%;
+    
+}
+.About_Us_Image::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Covers the entire image */
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+}
+.About_Us_Image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.About_Us-Text {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f4f4f4;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* Ensures text is above the overlay */
+    max-width: 80%; /* Limits the width of the text for better readability */
+}
+
+
+/* Parent container for menu items */
+.Menu_Items {
+    display: flex;
+    flex-wrap: wrap;         /* allows items to wrap to next row if needed */
+    justify-content: flex-start; /* start items on the left so margin-left: auto works */
+    gap: 20px;               /* spacing between items */
+    margin-top: 20px;
+}
+
+/* Each menu item */
+.Menu_Item {
+    background-color: #000b3d;
+    color: #f4f4f4;
+    border-radius: 20px;
+    padding: 20px;
+    width: 30%;              /* roughly 3 items per row on desktop */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.Menu_Item img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.Menu_Item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.Menu_Item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #f4f4f4;
+}
+
+/* Second item pushed to the far right */
+.Menu_Items .Menu_Item:nth-child(2) {
+    background-color:#000b3d ; /* Different shade */
+    margin-left: auto; /* Pushes the second item to the far right */
+}
+
+.Menu_Items .Menu_Item:nth-child(3) {
+    background-color: #000b3d; /* Different shade */
+    margin-left: auto; /* Pushes the third item to the far right */
+}
+
+.Footer {
+    height: 200px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 10px;
+    color: #000000;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.option-box h2 {
+    color: red;
+}
+
+/* ======== RESPONSIVE ======== */
+/*@media (max-width: 2140px) { */
+   /* header { */
+       /* width: 90%; /* Adjust header width for smaller screens */
+    
+    /*.rectangle nav a { */
+       /* padding: 6px 12px; /* Adjust padding for smaller screens */
+       /* font-size: 16px; /* Adjust font size for smaller screens */
+    
+
+   /* .hero { */
+       /* height: 400px; /* Adjust hero height for smaller screens */
+    
+
+.checkout-options {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.option-box {
+    background-color: #b1bdffe8;
+    width: 400px;
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.option-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border:rgba(0, 0, 0, 0.4);
+    border-radius: 70px;
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4c4c;
+}    
+
+/* --- Fix: Remove blue background from Contact Heading --- */
+.Contact_details h1 {
+    background: transparent;
+    color: #000b3d;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+/* --- Container Fixes --- */
+.Contact_details {
+    background-color: #ffffff; /* Changed from blue to white for a cleaner look */
+    width: 90%;
+    max-width: 900px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 50px auto;
+}
+
+.Main-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* --- Video Styling --- */
+.video-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.video-container h2 {
+    margin-bottom: 15px;
+    color: #000b3d;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    border: 2px solid #000b3d;
+}
+
+/* --- Simple CSS Carousel --- */
+.carousel {
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel h2 {
+    margin-bottom: 15px;
+    color: #000b3d;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Allows scrolling on mobile */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.carousel-track img {
+    flex: 0 0 auto;
+    width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for the City Names under images */
+.carousel-track figure {
+    margin: 0;
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.carousel-track figcaption {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000b3d;
+    font-size: 16px;
+}
+
+/* Ensure the images stay the same size */
+.carousel-track img {
+    display: block;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Scrollbar styling for the carousel */
+.carousel-track::-webkit-scrollbar {
+    height: 8px;
+}
+.carousel-track::-webkit-scrollbar-thumb {
+    background: #000b3d;
+    border-radius: 10px;
+}
+
+/* ======== GET STARTED SPECIFIC STYLES ======== */
+
+/* Simple Hero */
+.hero-simple {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #000b3d;
+    color: white;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+/* Steps Layout */
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.step-number {
+    background: #ff6b6b; /* Your button red */
+    color: white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Pricing Layout */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.price-box {
+    background: white;
+    border: 2px solid #000b3d;
+    padding: 40px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.price-box:hover {
+    transform: scale(1.03);
+}
+
+.price-box.featured {
+    border-color: #ff6b6b;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6b6b;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 36px;
+    font-weight: bold;
+    color: #000b3d;
+    margin: 20px 0;
+}
+
+.price span {
+    font-size: 16px;
+    color: #777;
+}
+
+.price-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.price-box li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.price-box li::before {
+    content: "✓ ";
+    color: green;
+    font-weight: bold;
+}
+
+/* ======== FOOD INC. STYLE PRODUCT GRID ======== */
+
+.product-grid {
+    display: grid;
+    /* Keeps the responsive 4-column layout */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.product-card {
+    background: white;
+    /* Matching your website's border style */
+    border: 2px solid #000b3d; 
+    border-radius: 20px; /* Matching your Menu and Footer radius */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centering text like your other boxes */
+}
+
+.product-card:hover {
+    /* Subtle lift effect used in your .option-box */
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    border-color: #ff6b6b; /* Changes to red on hover */
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* Slight curve on the bottom of the image */
+    border-bottom: 2px solid #000b3d;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h4 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #000b3d;
+    font-family: 'Arial', sans-serif;
+}
+
+.product-info p {
+    font-weight: bold;
+    color: #ff6b6b; /* Using your signature red for the price */
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    /* Matching your main button colors */
+    background-color: #ff6b6b; 
+    border: none;
+    border-radius: 50px; /* Fully rounded "pill" buttons */
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+    background-color: #ff4c4c; /* Matching your button:hover state */
+}
+
+/* Update to your "View All" button to match the nav links */
+.main-cta {
+    padding: 15px 40px;
+    font-size: 20px;
+    background-color: #000b3d;
+    color: white;
+    border: none;
+    border-radius: 12px; /* Matching the .rectangle nav border-radius */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+
+.main-cta:hover {
+    background-color: #00008b;
+    transform: translateY(-2px);
+}
