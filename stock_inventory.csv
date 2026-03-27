@@ -1,0 +1,21 @@
+ItemName,Category,StockQuantity
+Doner Meat,Meat,25
+Chicken Shawarma,Meat,20
+Lamb Kebab Skewers,Meat,15
+Pitta Bread,Bread,200
+Wrap Tortillas,Bread,150
+Chips (Fries),Sides,30
+Rice,Sides,10
+Lettuce,Vegetables,12
+Tomatoes,Vegetables,10
+Onions,Vegetables,8
+Cucumber,Vegetables,6
+Red Cabbage,Vegetables,5
+Garlic Sauce,Sauces,15
+Chilli Sauce,Sauces,12
+Yogurt Sauce,Sauces,10
+Hummus,Sides,8
+Falafel,Vegetarian,200
+Halloumi Cheese,Vegetarian,7
+Soft Drinks,Drinks,300
+Bottled Water,Drinks,200
