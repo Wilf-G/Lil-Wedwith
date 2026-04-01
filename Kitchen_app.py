@@ -1,12 +1,13 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import sqlite3
+import os
 
 class KitchenApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Food Inc. Kitchen Management")
-        self.root.geometry("900x600")
+        self.root.geometry("1000x600")
         
         # UI Styling
         style = ttk.Style()
@@ -28,30 +29,38 @@ class KitchenApp:
         # Search Section
         search_frame = tk.Frame(self.order_tab, pady=10)
         search_frame.pack(fill="x")
-        tk.Label(search_frame, text="Search Order ID / Name:").pack(side="left", px=10)
+        
+        tk.Label(search_frame, text="Search Order ID / Name:").pack(side="left", padx=10)
         self.search_ent = tk.Entry(search_frame)
-        self.search_ent.pack(side="left", px=10)
-        tk.Button(search_frame, text="Search", command=self.search_order).pack(side="left")
-        tk.Button(search_frame, text="Refresh All", command=self.refresh_data).pack(side="left", px=10)
+        self.search_ent.pack(side="left", padx=10)
+        
+        tk.Button(search_frame, text="Search", command=self.search_order, bg="#ff6b6b", fg="white").pack(side="left", padx=5)
+        tk.Button(search_frame, text="Refresh All", command=self.refresh_data, bg="#000b3d", fg="white").pack(side="left", padx=5)
 
         # Order List (Treeview)
         cols = ("ID", "Customer", "Type", "Location", "Total", "Status")
         self.tree = ttk.Treeview(self.order_tab, columns=cols, show="headings")
-        for col in cols: self.tree.heading(col, text=col)
+        for col in cols: 
+            self.tree.heading(col, text=col)
+            self.tree.column(col, width=100)
+            
         self.tree.pack(side="left", fill="both", expand=1)
         self.tree.bind("<<TreeviewSelect>>", self.show_receipt)
 
         # Visual Receipt Area
-        self.receipt_text = tk.Text(self.order_tab, width=30, font=("Courier", 12), bg="#fffde7")
-        self.receipt_text.pack(side="right", fill="both", px=10)
+        self.receipt_text = tk.Text(self.order_tab, width=40, font=("Courier", 12), bg="#fffde7", padx=10, pady=10)
+        self.receipt_text.pack(side="right", fill="both", padx=10)
 
     def setup_stock_tab(self):
         self.stock_tree = ttk.Treeview(self.stock_tab, columns=("Item", "Remaining"), show="headings")
         self.stock_tree.heading("Item", text="Item Name")
         self.stock_tree.heading("Remaining", text="Units in Stock")
-        self.stock_tree.pack(fill="both", expand=1, p=20)
+        self.stock_tree.pack(fill="both", expand=1, padx=20, pady=20)
 
     def refresh_data(self):
+        if not os.path.exists('food_inc.db'):
+            return
+
         # Refresh Orders
         for item in self.tree.get_children(): self.tree.delete(item)
         conn = sqlite3.connect('food_inc.db')
@@ -70,7 +79,9 @@ class KitchenApp:
     def show_receipt(self, event):
         selected = self.tree.selection()
         if not selected: return
-        order_id = self.tree.item(selected[0])['values'][0]
+        order_values = self.tree.item(selected[0])['values']
+        order_id = order_values[0]
+        cust_name = order_values[1]
         
         conn = sqlite3.connect('food_inc.db')
         cursor = conn.cursor()
@@ -78,17 +89,25 @@ class KitchenApp:
         items = cursor.fetchall()
         
         self.receipt_text.delete('1.0', tk.END)
-        self.receipt_text.insert(tk.END, f"  FOOD INC. RECEIPT\n")
-        self.receipt_text.insert(tk.END, f"  ORDER ID: #{order_id}\n")
-        self.receipt_text.insert(tk.END, "-"*25 + "\n")
+        self.receipt_text.insert(tk.END, f"       FOOD INC. KITCHEN\n")
+        self.receipt_text.insert(tk.END, f"       RECEIPT FOR #{order_id}\n")
+        self.receipt_text.insert(tk.END, "="*30 + "\n")
+        self.receipt_text.insert(tk.END, f" CUSTOMER: {cust_name}\n")
+        self.receipt_text.insert(tk.END, f" TYPE: {order_values[2]}\n")
+        self.receipt_text.insert(tk.END, f" AT: {order_values[3]}\n")
+        self.receipt_text.insert(tk.END, "-"*30 + "\n")
         for name, qty in items:
             self.receipt_text.insert(tk.END, f" {qty}x {name}\n")
-        self.receipt_text.insert(tk.END, "-"*25 + "\n")
-        self.receipt_text.insert(tk.END, " STATUS: PENDING\n")
+        self.receipt_text.insert(tk.END, "="*30 + "\n")
+        self.receipt_text.insert(tk.END, f" TOTAL PAID: £{order_values[4]}\n")
         conn.close()
 
     def search_order(self):
         query = self.search_ent.get()
+        if not query:
+            self.refresh_data()
+            return
+            
         for item in self.tree.get_children(): self.tree.delete(item)
         conn = sqlite3.connect('food_inc.db')
         cursor = conn.cursor()
