@@ -2,53 +2,47 @@
    1. ADD TO CART LOGIC (Home & Product Page)
    ============================================================ */
 document.addEventListener('click', function(e) {
-    // Looks for any button with class 'order-btn' or 'add-btn'
     if (e.target.classList.contains('order-btn') || e.target.classList.contains('add-btn')) {
         
         const itemName = e.target.getAttribute('data-name');
         const itemPrice = parseFloat(e.target.getAttribute('data-price'));
         
-        // Find the quantity input in the same card as the button
+        // Find quantity input in the same card
         const qtyInput = e.target.parentElement.querySelector('.qty-input');
         const quantity = parseInt(qtyInput.value) || 1;
 
-        // Use sessionStorage (clears when tab closes) to store the cart
         let cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
         
-        // Check if item already exists in cart
+        // Check if item already exists
         const existingItem = cart.find(item => item.name === itemName);
         if (existingItem) {
-            existingItem.qty = quantity; // Update quantity
+            existingItem.qty = quantity; 
         } else {
             cart.push({ name: itemName, price: itemPrice, qty: quantity });
         }
         
-        // Save back to memory and go to checkout
         sessionStorage.setItem('foodCart', JSON.stringify(cart));
         window.location.href = 'Checkout.html';
     }
 });
 
 /* ============================================================
-   2. CHECKOUT PAGE LOGIC (Summary & Flow)
+   2. CHECKOUT UI & SUMMARY
    ============================================================ */
 if (window.location.pathname.includes('Checkout.html')) {
     renderSummary();
 }
 
-// Draws the items and total in the Checkout Summary box
 function renderSummary() {
     const cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
     const summaryList = document.getElementById('cart-items-list');
     const totalDisplay = document.getElementById('total-price');
 
     if (!summaryList) return;
-
-    // Clear the box before redrawing (Prevents duplicates on refresh)
     summaryList.innerHTML = ""; 
 
     if (cart.length === 0) {
-        summaryList.innerHTML = "<p style='text-align:center; padding:20px;'>Your cart is empty.</p>";
+        summaryList.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
         if(document.getElementById('proceed-to-service')) document.getElementById('proceed-to-service').style.display = 'none';
         if(totalDisplay) totalDisplay.innerText = "";
     } else {
@@ -60,14 +54,13 @@ function renderSummary() {
                 <p>
                     <span>${item.qty}x ${item.name}</span>
                     <span>£${itemTotal.toFixed(2)}</span>
-                    <button onclick="removeItem(${index})" style="background:#f0f0f0; color:#333; padding:5px 10px; font-size:12px; border-radius:5px; border:1px solid #ccc;">Remove</button>
+                    <button onclick="removeItem(${index})" style="background:#f0f0f0; border:1px solid #ccc; padding:2px 8px; font-size:11px;">Remove</button>
                 </p>`;
         });
         if(totalDisplay) totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
     }
 }
 
-// Function to remove a specific item from the list
 window.removeItem = function(index) {
     let cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
     cart.splice(index, 1);
@@ -75,83 +68,93 @@ window.removeItem = function(index) {
     renderSummary();
 };
 
-// Flow: Step 1 (Summary) -> Step 2 (Service Choice)
 document.getElementById('proceed-to-service')?.addEventListener('click', () => {
     document.getElementById('summary-section').style.display = 'none';
     document.getElementById('service-choice-section').style.display = 'block';
 });
 
-// Flow: Step 2 (Choice) -> Step 3 (Form Details)
 window.showDetailsForm = function(type) {
     document.getElementById('service-choice-section').style.display = 'none';
     document.getElementById('details-section').style.display = 'block';
     
-    const deliveryFields = document.getElementById('delivery-fields');
-    const tableFields = document.getElementById('table-fields');
-    const formTitle = document.getElementById('form-title');
-
-    if (type === 'delivery') {
-        formTitle.innerText = "Delivery Details";
-        deliveryFields.style.display = 'block';
-        tableFields.style.display = 'none';
-    } else {
-        formTitle.innerText = "Table Booking Details";
-        deliveryFields.style.display = 'none';
-        tableFields.style.display = 'block';
-    }
+    document.getElementById('delivery-fields').style.display = (type === 'delivery') ? 'block' : 'none';
+    document.getElementById('table-fields').style.display = (type === 'table') ? 'block' : 'none';
+    document.getElementById('form-title').innerText = (type === 'delivery') ? "Delivery Details" : "Table Booking";
 };
 
 /* ============================================================
-   3. REAL-TIME CARD DETECTION & VALIDATION
+   3. REAL-TIME CARD DETECTION
    ============================================================ */
 const cardInput = document.getElementById('card-num');
 const brandBadge = document.getElementById('card-brand-badge');
 
 if (cardInput) {
     cardInput.addEventListener('input', function(e) {
-        // 1. Format digits with spaces (1234 5678...)
         let val = e.target.value.replace(/\D/g, ''); 
         e.target.value = val.replace(/(.{4})/g, '$1 ').trim();
-        
-        // 2. Show/Hide Badge
         brandBadge.style.opacity = val.length > 0 ? "1" : "0";
         
-        // 3. Detect Brand (Visa = 4, Mastercard = 5)
         if (val.startsWith('4')) {
             brandBadge.innerText = "Visa";
             cardInput.className = "visa-style";
         } else if (val.startsWith('5')) {
             brandBadge.innerText = "Mastercard";
             cardInput.className = "mastercard-style";
-        } else if (val.length > 0) {
-            brandBadge.innerText = "Credit Card";
+        } else {
+            brandBadge.innerText = "Card";
             cardInput.className = "";
         }
     });
 }
 
-// Final Order Completion
+/* ============================================================
+   4. FINAL SUBMISSION TO PYTHON DATABASE
+   ============================================================ */
 document.getElementById('final-order-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // Simple validation for card length
-    const rawCard = document.getElementById('card-num').value.replace(/\s/g, '');
-    if (rawCard.length < 16) {
-        alert("Please enter a valid 16-digit card number.");
-        return;
-    }
 
-    // Hide form and show Receipt
-    document.getElementById('details-section').style.display = 'none';
-    const receipt = document.getElementById('order-receipt');
-    const content = document.getElementById('receipt-content');
+    const cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
+    let total = 0;
+    cart.forEach(item => total += (item.price * item.qty));
+
+    // Determine if it's delivery or table based on which field is visible
+    const isDelivery = document.getElementById('delivery-fields').style.display === 'block';
     
-    content.innerHTML = `
-        <p>Thank you for your purchase, <strong>${document.getElementById('cust-name').value}</strong>!</p>
-        <p>Your payment has been processed and your order is being prepared.</p>
-    `;
-    receipt.style.display = 'block';
-    
-    // Wipe the session cart after order is finished
-    sessionStorage.removeItem('foodCart');
+    const orderData = {
+        name: document.getElementById('cust-name').value,
+        type: isDelivery ? 'Delivery' : 'Table',
+        location: isDelivery ? document.getElementById('address').value : document.getElementById('table-no').value,
+        total: total,
+        items: cart
+    };
+
+    // !!! REPLACE THIS URL WITH YOUR COPIED "FORWARDED ADDRESS" FROM THE PORTS TAB !!!
+    const BACKEND_URL = 'https://jubilant-orbit-7v7jvgqw75992xv7x-5000.app.github.dev/api/order';
+
+    fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Success: Hide form and show receipt with Order Number
+        document.getElementById('details-section').style.display = 'none';
+        const receipt = document.getElementById('order-receipt');
+        const content = document.getElementById('receipt-content');
+        
+        content.innerHTML = `
+            <h3 style="color:var(--navy); font-size:24px;">Order #${data.order_id}</h3>
+            <p>Thank you, <b>${orderData.name}</b>! Your order has been sent to the kitchen.</p>
+            <p>A receipt has been generated for our staff.</p>
+        `;
+        receipt.style.display = 'block';
+        
+        // Clear cart memory
+        sessionStorage.removeItem('foodCart');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Server error! Please make sure your Python server is running and Port 5000 is Public.");
+    });
 });
