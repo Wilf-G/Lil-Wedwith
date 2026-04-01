@@ -5,20 +5,19 @@
     box-sizing: border-box;
 }
 
-:root {
-    --navy: #000b3d;
-    --red: #ff6b6b;
-    --dark-red: #ee5253;
-    --white: #ffffff;
-    --glass: rgba(0, 11, 61, 0.4); /* Navy tint for image text boxes */
-}
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
     color: #333;
     line-height: 1.6;
     padding: 20px;
+}
+
+:root {
+    --navy: #000b3d;
+    --red: #ff6b6b;
+    --dark-red: #ee5253;
+    --white: #ffffff;
 }
 
 /* ======== 2. HEADER & NAVIGATION ======== */
@@ -85,6 +84,7 @@ button:hover {
     color: white;
 }
 
+/* Quantity Input Styling */
 .qty-input {
     width: 65px;
     padding: 10px;
@@ -105,56 +105,55 @@ input[type="text"], input[type="number"], input[type="tel"] {
     border-radius: 8px;
 }
 
-/* ======== 4. HERO & ABOUT IMAGES (RESPONSIVE VISIBILITY) ======== */
-.hero, .About_Us_Image {
+/* ======== 4. HERO & ABOUT IMAGES ======== */
+.hero {
     position: relative;
     width: 100%;
-    height: 700px; 
+    height: 600px;
     overflow: hidden;
     border-radius: 20px;
     margin-bottom: 40px;
-    display: flex;
-    align-items: flex-end; /* Pushes text to the bottom to show the image subject */
-    justify-content: center;
 }
 
-/* FEATURE: Gradient bottom shadow instead of full dark tint */
+/* FEATURE: Extra Large About Us Image */
+.About_Us_Image {
+    position: relative;
+    width: 100%;
+    height: 850px; 
+    overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
 .hero::before, .About_Us_Image::before {
     content: "";
     position: absolute;
-    bottom: 0; left: 0;
-    width: 100%;
-    height: 60%; /* Only darkens the bottom half */
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0, 0, 0, 0.45);
     z-index: 1;
 }
 
 .hero img, .About_Us_Image img {
     width: 100%; height: 100%; object-fit: cover;
-    z-index: 0;
 }
 
-/* Glassmorphism Text Box */
 .hero-text, .About_Us-Text {
-    position: relative;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
     color: white;
     text-align: center;
-    width: 75%;
-    margin-bottom: 60px; /* Space from bottom edge */
-    padding: 25px;
-    background: var(--glass); 
-    backdrop-filter: blur(8px); /* Modern blurred glass effect */
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 28px;
-    font-weight: 600;
+    width: 80%;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
 }
 
-/* ======== 5. CENTERED MENU PILL HEADING ======== */
+/* ======== 5. CENTERED MENU HEADING ======== */
 .Menu {
     text-align: center;
-    margin: 60px auto 40px;
+    margin: 50px auto 30px;
     width: 100%;
 }
 
@@ -201,7 +200,7 @@ input[type="text"], input[type="number"], input[type="tel"] {
     width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 15px;
 }
 
-/* ======== 7. GET STARTED (PREMIUM PRICING) ======== */
+/* ======== 7. GET STARTED (PREMIUM LOOK) ======== */
 .hero-simple {
     text-align: center;
     padding: 80px 20px;
@@ -293,6 +292,7 @@ input[type="text"], input[type="number"], input[type="tel"] {
     color: var(--navy);
 }
 
+/* Card Input Styling */
 .card-input-wrapper {
     position: relative;
     display: flex;
@@ -329,46 +329,71 @@ input[type="text"], input[type="number"], input[type="tel"] {
     background: var(--white);
 }
 
-/* ======== 10. SMART RESPONSIVE DESIGN (IMAGE & TEXT FIX) ======== */
+/* ======== 10. FINAL RESPONSIVE SETTINGS ======== */
 
-/* LARGE SCREENS (Desktop 1400px+) */
-@media (min-width: 1400px) {
-    .About_Us_Image { height: 850px; } /* Keep your massive desktop image here */
-    .About_Us-Text { width: 55%; font-size: 32px; }
-}
-
-/* TABLETS (Under 1200px) */
-@media (max-width: 1200px) {
-    .hero, .About_Us_Image { height: 550px; }
-    .About_Us-Text, .hero-text { 
-        width: 85%; 
-        font-size: 24px; 
-        margin-bottom: 40px; 
+/* For Tablets & Small Laptops (1024px and down) */
+@media (max-width: 1024px) {
+    .About_Us_Image {
+        height: 600px; /* Shrink from 850px so it fits tablet screens */
+    }
+    .About_Us-Text {
+        font-size: 24px;
+        width: 85%;
+    }
+    .pricing-container {
+        gap: 20px;
     }
 }
 
-/* MOBILE PHONES (Under 768px) */
-@media (max-width: 768px) {
-    .hero, .About_Us_Image { 
-        height: 480px; /* Resize height so phone user can see subjects */
+/* For Mobile Phones (600px and down) */
+@media (max-width: 600px) {
+    /* Shrink the headers and images for small screens */
+    header {
+        width: 180px;
     }
 
-    /* FIX: Reshaped Box for Small Screens to show image subject */
+    .About_Us_Image, .hero {
+        height: 480px; /* Much better height for a phone screen */
+        border-radius: 10px;
+    }
+
+    /* FIX: Make About Us text fit perfectly on a phone */
     .About_Us-Text, .hero-text {
-        width: 94%;      
-        font-size: 16px; /* Decreased size for small screens */
-        margin-bottom: 25px; /* Stay close to the bottom */
-        padding: 15px;
+        font-size: 17px; /* Small enough not to overflow */
+        width: 92%;      /* Use almost full width */
         line-height: 1.4;
-        background: rgba(0, 0, 0, 0.65); /* Slightly darker for readability */
+        font-weight: 600;
+        padding: 0 10px;
     }
 
-    .pricing-container { flex-direction: column; align-items: center; }
-    .price-box.featured { transform: scale(1); margin: 20px 0; }
-    .price-box { width: 95%; }
-
-    .Menu h2 { font-size: 22px; padding: 10px 30px; width: 90%; }
+    /* Stack the pricing boxes vertically */
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-top: 40px;
+    }
     
-    nav a { font-size: 14px; padding: 5px 8px; }
-    header { width: 180px; }
+    /* Remove the "zoom" scale on mobile to prevent horizontal scrolling */
+    .price-box.featured {
+        transform: scale(1); 
+        margin: 10px 0;
+    }
+    
+    .price-box {
+        width: 90%; /* Boxes take up most of the phone width */
+    }
+
+    /* Adjust Navigation for touch */
+    nav a {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    /* Adjust centered Menu Pill */
+    .Menu h2 {
+        font-size: 20px;
+        padding: 10px 25px;
+        width: 90%;
+    }
 }
