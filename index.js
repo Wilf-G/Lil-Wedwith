@@ -1,74 +1,157 @@
 /* ============================================================
-   1. PRODUCT PAGE & HOME PAGE LOGIC
-   Saves the food data when a user clicks any "Order" button
+   1. ADD TO CART LOGIC (Home & Product Page)
    ============================================================ */
 document.addEventListener('click', function(e) {
-    // This looks for any button with the ID starting with "Order_Now" 
-    // or any button with the class "add-btn"
-    if (e.target && (e.target.id.includes('Order_Now') || e.target.classList.contains('add-btn'))) {
+    // Looks for any button with class 'order-btn' or 'add-btn'
+    if (e.target.classList.contains('order-btn') || e.target.classList.contains('add-btn')) {
         
         const itemName = e.target.getAttribute('data-name');
-        const itemPrice = e.target.getAttribute('data-price');
+        const itemPrice = parseFloat(e.target.getAttribute('data-price'));
+        
+        // Find the quantity input in the same card as the button
+        const qtyInput = e.target.parentElement.querySelector('.qty-input');
+        const quantity = parseInt(qtyInput.value) || 1;
 
-        if (itemName && itemPrice) {
-            const orderData = {
-                name: itemName,
-                price: parseFloat(itemPrice),
-                quantity: 1
-            };
-
-            // Save to browser memory
-            localStorage.setItem('selectedItem', JSON.stringify(orderData));
-
-            // Move to checkout
-            window.location.href = 'Checkout.html';
+        // Use sessionStorage (clears when tab closes) to store the cart
+        let cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
+        
+        // Check if item already exists in cart
+        const existingItem = cart.find(item => item.name === itemName);
+        if (existingItem) {
+            existingItem.qty = quantity; // Update quantity
+        } else {
+            cart.push({ name: itemName, price: itemPrice, qty: quantity });
         }
+        
+        // Save back to memory and go to checkout
+        sessionStorage.setItem('foodCart', JSON.stringify(cart));
+        window.location.href = 'Checkout.html';
     }
 });
 
 /* ============================================================
-   2. CHECKOUT PAGE LOGIC
-   Runs only when a user is on the checkout page and submits a form
+   2. CHECKOUT PAGE LOGIC (Summary & Flow)
    ============================================================ */
-const checkoutForms = document.querySelectorAll('.option-box form');
+if (window.location.pathname.includes('Checkout.html')) {
+    renderSummary();
+}
 
-if (checkoutForms.length > 0) {
-    checkoutForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page from refreshing
+// Draws the items and total in the Checkout Summary box
+function renderSummary() {
+    const cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
+    const summaryList = document.getElementById('cart-items-list');
+    const totalDisplay = document.getElementById('total-price');
 
-            const rawData = localStorage.getItem('selectedItem');
-            
-            if (rawData) {
-                const item = JSON.parse(rawData);
-                const totalCost = item.price * item.quantity;
+    if (!summaryList) return;
 
-                // Hide the forms/options
-                const optionsContainer = document.querySelector('.checkout-options');
-                if (optionsContainer) optionsContainer.style.display = 'none';
+    // Clear the box before redrawing (Prevents duplicates on refresh)
+    summaryList.innerHTML = ""; 
 
-                // Show the receipt (Make sure you added the "order-receipt" div to your HTML!)
-                const receiptSection = document.getElementById('order-receipt');
-                const receiptContent = document.getElementById('receipt-content');
-
-                if (receiptSection && receiptContent) {
-                    receiptContent.innerHTML = `
-                        <p><strong>Customer:</strong> ${form.querySelector('input[type="text"]').value}</p>
-                        <p><strong>Item:</strong> ${item.name}</p>
-                        <p><strong>Quantity:</strong> ${item.quantity}</p>
-                        <p><strong>Unit Price:</strong> £${item.price.toFixed(2)}</p>
-                        <hr style="border: 1px solid #000b3d; margin: 15px 0;">
-                        <h3 style="font-size: 22px; color: #000b3d;">Total Paid: £${totalCost.toFixed(2)}</h3>
-                    `;
-                    receiptSection.style.display = 'block';
-                }
-
-                // Clear the cart
-                localStorage.removeItem('selectedItem');
-            } else {
-                alert("Please select an item from the menu first!");
-                window.location.href = 'index.html';
-            }
+    if (cart.length === 0) {
+        summaryList.innerHTML = "<p style='text-align:center; padding:20px;'>Your cart is empty.</p>";
+        if(document.getElementById('proceed-to-service')) document.getElementById('proceed-to-service').style.display = 'none';
+        if(totalDisplay) totalDisplay.innerText = "";
+    } else {
+        let total = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.qty;
+            total += itemTotal;
+            summaryList.innerHTML += `
+                <p>
+                    <span>${item.qty}x ${item.name}</span>
+                    <span>£${itemTotal.toFixed(2)}</span>
+                    <button onclick="removeItem(${index})" style="background:#f0f0f0; color:#333; padding:5px 10px; font-size:12px; border-radius:5px; border:1px solid #ccc;">Remove</button>
+                </p>`;
         });
+        if(totalDisplay) totalDisplay.innerText = `Total: £${total.toFixed(2)}`;
+    }
+}
+
+// Function to remove a specific item from the list
+window.removeItem = function(index) {
+    let cart = JSON.parse(sessionStorage.getItem('foodCart')) || [];
+    cart.splice(index, 1);
+    sessionStorage.setItem('foodCart', JSON.stringify(cart));
+    renderSummary();
+};
+
+// Flow: Step 1 (Summary) -> Step 2 (Service Choice)
+document.getElementById('proceed-to-service')?.addEventListener('click', () => {
+    document.getElementById('summary-section').style.display = 'none';
+    document.getElementById('service-choice-section').style.display = 'block';
+});
+
+// Flow: Step 2 (Choice) -> Step 3 (Form Details)
+window.showDetailsForm = function(type) {
+    document.getElementById('service-choice-section').style.display = 'none';
+    document.getElementById('details-section').style.display = 'block';
+    
+    const deliveryFields = document.getElementById('delivery-fields');
+    const tableFields = document.getElementById('table-fields');
+    const formTitle = document.getElementById('form-title');
+
+    if (type === 'delivery') {
+        formTitle.innerText = "Delivery Details";
+        deliveryFields.style.display = 'block';
+        tableFields.style.display = 'none';
+    } else {
+        formTitle.innerText = "Table Booking Details";
+        deliveryFields.style.display = 'none';
+        tableFields.style.display = 'block';
+    }
+};
+
+/* ============================================================
+   3. REAL-TIME CARD DETECTION & VALIDATION
+   ============================================================ */
+const cardInput = document.getElementById('card-num');
+const brandBadge = document.getElementById('card-brand-badge');
+
+if (cardInput) {
+    cardInput.addEventListener('input', function(e) {
+        // 1. Format digits with spaces (1234 5678...)
+        let val = e.target.value.replace(/\D/g, ''); 
+        e.target.value = val.replace(/(.{4})/g, '$1 ').trim();
+        
+        // 2. Show/Hide Badge
+        brandBadge.style.opacity = val.length > 0 ? "1" : "0";
+        
+        // 3. Detect Brand (Visa = 4, Mastercard = 5)
+        if (val.startsWith('4')) {
+            brandBadge.innerText = "Visa";
+            cardInput.className = "visa-style";
+        } else if (val.startsWith('5')) {
+            brandBadge.innerText = "Mastercard";
+            cardInput.className = "mastercard-style";
+        } else if (val.length > 0) {
+            brandBadge.innerText = "Credit Card";
+            cardInput.className = "";
+        }
     });
 }
+
+// Final Order Completion
+document.getElementById('final-order-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simple validation for card length
+    const rawCard = document.getElementById('card-num').value.replace(/\s/g, '');
+    if (rawCard.length < 16) {
+        alert("Please enter a valid 16-digit card number.");
+        return;
+    }
+
+    // Hide form and show Receipt
+    document.getElementById('details-section').style.display = 'none';
+    const receipt = document.getElementById('order-receipt');
+    const content = document.getElementById('receipt-content');
+    
+    content.innerHTML = `
+        <p>Thank you for your purchase, <strong>${document.getElementById('cust-name').value}</strong>!</p>
+        <p>Your payment has been processed and your order is being prepared.</p>
+    `;
+    receipt.style.display = 'block';
+    
+    // Wipe the session cart after order is finished
+    sessionStorage.removeItem('foodCart');
+});

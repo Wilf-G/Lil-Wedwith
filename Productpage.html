@@ -3,63 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <link rel="stylesheet" href= "Website_Colour.css">
+    <title>Product Page - Food Inc.</title>
+    <link rel="stylesheet" href="Website_Colour.css">
 </head>
 <body>
     <header>
         <h1>Food Inc.</h1>
     </header>
 
-    
-    <div class ="rectangle">
+    <div class="rectangle">
         <nav>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="About_Us.html">About Us</a>
                 <a href="Get_Started.html">Get Started</a>
                 <a href="Contact_Us.html">Contact Us</a>
-                <a href="Checkout.html" >Checkout</a>
+                <a href="Checkout.html">Checkout</a>
             </div>
         </nav>
     </div>
 
+    <!-- Centered Heading for Products -->
+    <section class="Menu">
+        <h2>Our Full Menu</h2>
+    </section>
+
     <section id="extended-menu" class="product-grid">
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=600&h=400&fit=crop" alt="Creamy Truffle Pasta">
-        <div class="product-info">
-            <h4>Truffle Pasta</h4>
-            <p>£12.99</p>
-            <button class="add-btn">Add to Cart</button>
+        <!-- Card 1 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=600&h=400&fit=crop" alt="Creamy Truffle Pasta">
+            <div class="product-info">
+                <h4>Truffle Pasta</h4>
+                <p>£12.99</p>
+                <!-- FIX: Added qty-input and data attributes -->
+                <input type="number" class="qty-input" value="1" min="1">
+                <button class="add-btn" data-name="Truffle Pasta" data-price="12.99">Add to Cart</button>
+            </div>
         </div>
-    </div>
 
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=600&h=400&fit=crop" alt="Fresh Greek Salad">
-        <div class="product-info">
-            <h4>Greek Salad</h4>
-            <p>£8.50</p>
-            <button class="add-btn">Add to Cart</button>
+        <!-- Card 2 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=600&h=400&fit=crop" alt="Fresh Greek Salad">
+            <div class="product-info">
+                <h4>Greek Salad</h4>
+                <p>£8.50</p>
+                <input type="number" class="qty-input" value="1" min="1">
+                <button class="add-btn" data-name="Greek Salad" data-price="8.50">Add to Cart</button>
+            </div>
         </div>
-    </div>
 
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=600&h=400&fit=crop" alt="Premium Sushi Set">
-        <div class="product-info">
-            <h4>Premium Sushi</h4>
-            <p>£18.00</p>
-            <button class="add-btn">Add to Cart</button>
+        <!-- Card 3 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=600&h=400&fit=crop" alt="Premium Sushi Set">
+            <div class="product-info">
+                <h4>Premium Sushi</h4>
+                <p>£18.00</p>
+                <input type="number" class="qty-input" value="1" min="1">
+                <button class="add-btn" data-name="Premium Sushi" data-price="18.00">Add to Cart</button>
+            </div>
         </div>
-    </div>
 
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=600&h=400&fit=crop" alt="Authentic Street Tacos">
-        <div class="product-info">
-            <h4>Street Tacos</h4>
-            <p>£10.50</p>
-            <button class="add-btn">Add to Cart</button>
+        <!-- Card 4 -->
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=600&h=400&fit=crop" alt="Authentic Street Tacos">
+            <div class="product-info">
+                <h4>Street Tacos</h4>
+                <p>£10.50</p>
+                <input type="number" class="qty-input" value="1" min="1">
+                <button class="add-btn" data-name="Street Tacos" data-price="10.50">Add to Cart</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <footer>
+        <section class="Footer">
+            <p>&copy; 2024 Food Inc. All rights reserved.</p>
+        </section>
+    </footer>
+
+    <!-- FIX: Link the JavaScript file so the buttons work -->
+    <script src="index.js"></script>
 </body>
 </html>

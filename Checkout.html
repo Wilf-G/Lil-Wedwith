@@ -14,7 +14,6 @@
     </header>
 
     <section class="rectangle">
-        
         <nav>
             <div class="nav-links">
                 <a href="index.html">Home</a>
@@ -26,52 +25,75 @@
         </nav>
     </section>
     
-    <div id="order-receipt" class="option-box" style="display: none; width: 100%; max-width: 600px; margin: 20px auto; background: white; border: 3px solid #000b3d;">
-        <h2 style="color: #ff6b6b;">Order Summary</h2>
-        <div id="receipt-content" style="text-align: left; padding: 20px; line-height: 2;">
-            </div>
-        <button onclick="window.location.href='index.html'" style="width: auto; padding: 10px 30px;">Back to Home</button>
-    </div>
-
-        <div class="checkout-options">
-
-            <div class="option-box">
-                <h2>Delivery to Home</h2>
-                <form>
-                    <label>Full Name</label>
-                    <input type="text" required>
-
-                    <label>Address</label>
-                    <input type="text" required>
-
-                    <label>Postcode</label>
-                    <input type="text" required>
-
-                    <label>Phone Number</label>
-                    <input type="tel" required>
-
-                    <button type="submit">Order Delivery</button>
-                </form>
-            </div>
-
-            <div class="option-box">
-                <h2>Table Service</h2>
-                <form>
-                    <label>Full Name</label>
-                    <input type="text" required>
-
-                    <label>Table Number</label>
-                    <input type="number" required>
-
-                    <label>Number of Guests</label>
-                    <input type="number" required>
-
-                    <button type="submit">Order to Table</button>
-                </form>
-            </div>
-
+    <section class="checkout-container">
+        <!-- STEP 1: SUMMARY -->
+        <div id="summary-section" class="option-box">
+            <h2>Your Order Summary</h2>
+            <div id="cart-items-list"></div>
+            <div id="total-price"></div>
+            <button id="proceed-to-service" class="main-cta">Buy Now</button>
         </div>
 
+        <!-- STEP 2: SERVICE CHOICE -->
+        <div id="service-choice-section" class="option-box" style="display:none;">
+            <h2>How would you like your food?</h2>
+            <div style="display:flex; gap: 20px; justify-content: center; margin-top: 20px;">
+                <button onclick="showDetailsForm('delivery')">Home Delivery</button>
+                <button onclick="showDetailsForm('table')">Book a Table</button>
+            </div>
+        </div>
+
+        <!-- STEP 3: PERSONAL & PAYMENT DETAILS -->
+        <div id="details-section" class="option-box" style="display:none;">
+            <h2 id="form-title">Enter Details</h2>
+            <form id="final-order-form">
+                <div id="delivery-fields">
+                    <label>Address</label>
+                    <input type="text" id="address" placeholder="123 Street Name">
+                </div>
+                <div id="table-fields" style="display:none;">
+                    <label>Table Number</label>
+                    <input type="number" id="table-no">
+                </div>
+                
+                <label>Full Name</label>
+                <input type="text" required id="cust-name">
+
+                <hr style="margin: 20px 0;">
+                <h3>Payment Details</h3>
+                
+                <!-- NEW PROFESSIONAL CARD INPUT SECTION -->
+                <div class="payment-box">
+                    <label>Card Number</label>
+                    <div class="card-input-wrapper">
+                        <input type="text" id="card-num" placeholder="1234 5678 9101 1121" maxlength="19" required>
+                        <span id="card-brand-badge"></span> 
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex:1">
+                        <label>Expiry</label>
+                        <input type="text" placeholder="MM/YY" required>
+                    </div>
+                    <div style="flex:1">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="main-cta" style="width: 100%; margin-top: 20px;">Complete Purchase</button>
+            </form>
+        </div>
+
+        <!-- STEP 4: SUCCESS RECEIPT -->
+        <div id="order-receipt" class="option-box" style="display: none;">
+            <h2 style="color: green;">Order Successful!</h2>
+            <div id="receipt-content"></div>
+            <button onclick="window.location.href='index.html'">Back to Home</button>
+        </div>
     </section>
+
+    <script src="index.js"></script>
 </body>
 </html>
