@@ -329,8 +329,71 @@ input[type="text"], input[type="number"], input[type="tel"] {
     background: var(--white);
 }
 
-@media (max-width: 800px) {
-    .pricing-container { flex-direction: column; align-items: center; }
-    .price-box.featured { transform: scale(1); }
-    .About_Us_Image { height: 400px; }
+/* ======== 10. FINAL RESPONSIVE SETTINGS ======== */
+
+/* For Tablets & Small Laptops (1024px and down) */
+@media (max-width: 1024px) {
+    .About_Us_Image {
+        height: 600px; /* Shrink from 850px so it fits tablet screens */
+    }
+    .About_Us-Text {
+        font-size: 24px;
+        width: 85%;
+    }
+    .pricing-container {
+        gap: 20px;
+    }
+}
+
+/* For Mobile Phones (600px and down) */
+@media (max-width: 600px) {
+    /* Shrink the headers and images for small screens */
+    header {
+        width: 180px;
+    }
+
+    .About_Us_Image, .hero {
+        height: 480px; /* Much better height for a phone screen */
+        border-radius: 10px;
+    }
+
+    /* FIX: Make About Us text fit perfectly on a phone */
+    .About_Us-Text, .hero-text {
+        font-size: 17px; /* Small enough not to overflow */
+        width: 92%;      /* Use almost full width */
+        line-height: 1.4;
+        font-weight: 600;
+        padding: 0 10px;
+    }
+
+    /* Stack the pricing boxes vertically */
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-top: 40px;
+    }
+    
+    /* Remove the "zoom" scale on mobile to prevent horizontal scrolling */
+    .price-box.featured {
+        transform: scale(1); 
+        margin: 10px 0;
+    }
+    
+    .price-box {
+        width: 90%; /* Boxes take up most of the phone width */
+    }
+
+    /* Adjust Navigation for touch */
+    nav a {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    /* Adjust centered Menu Pill */
+    .Menu h2 {
+        font-size: 20px;
+        padding: 10px 25px;
+        width: 90%;
+    }
 }
