@@ -1,7 +1,6 @@
 import time, os
-import pandas as pd
-
-df = pd.read_csv("stock_inventory.csv")
+import sqlite3 as sql
+import tkinter
 
 orderNumber = 0 #Global variable to store order number when making multiple
 itemsOrdered = [] # array to store the items ordered so they can be outputted when outputting a receipt
@@ -15,8 +14,8 @@ LoginDetails= {
 def ItemStock():
     print("What item would you like to view?")
     item = input("> ")
-    if item in df["ItemName"]:
-        print(df[df["Quantity"] == df[item]]) 
+    if item in #Productnames:
+        print(#Stock quantity related to product) 
     else:
         print("That item is unavailable, try looking for something else")
         ItemStock()
