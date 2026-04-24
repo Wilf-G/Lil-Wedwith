@@ -4,7 +4,7 @@ import sqlite3
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app) # Allows your website to talk to this script
+CORS(app) # Allows our website to talk to this script
 
 def init_db():
     conn = sqlite3.connect('food_inc.db')
