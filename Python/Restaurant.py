@@ -1,6 +1,6 @@
 import time, os
 import sqlite3 as sql
-import tkinter
+import tkinter as tk
 
 orderNumber = 0 #Global variable to store order number when making multiple
 itemsOrdered = [] # array to store the items ordered so they can be outputted when outputting a receipt
