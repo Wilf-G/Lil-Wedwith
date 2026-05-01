@@ -2,6 +2,7 @@ Documentation
 
 Methodology chosen: Scrum, due to its easily adaptable nature, and perfect layout for desgining a project in increments, like what is being done here. As part of this methodology, we rotated who had the title of scrum master rotate on a weekly basis, and updated eachother frequently on project progress, alongside weekly scrums (meetings).
 
+
 Initiation Phase:
 
 -We quizzed the client on preferences regarding accessibility, design, and desired functionality of the website. This allowed us to work with more detailed requirements, such as:
@@ -19,17 +20,25 @@ Initiation Phase:
 
 Planning phase:
 
+BUDGET ALLOCATION-
+Budget: £50,000
+£5000 - Equiptment 
+Staff payroll - £30000
+
 -We created a planning document, Including 4 sets of High-Fidelity wireframes, to represent the layout of the front-facing HTML application. These also included elements of responsive design, with a draft of a mobile-style layout, to allow the site to be used regardless of which devices the customers will have available. 
 
+PLANNING SCRUM MEETING:
 Task Delegation:
 -Wilf: High fidelity wireframes 
 -Liam: Python UX Flowchart 
 -ChiChi: HTML framework + asset sourcing
 -The flowchart was made to represent the UX of our Python system, which will allow staff to view and modify stock in accordance with orders made by customers. This included function names, which will later be developed, in a top-down development approach. 
 
+
 Development phase:
 - So far during the development phase I have created different functions in the python application to allow for a log in system in order to access the menu page where employees' usernames and passwords can be added when more employees are able to use it. Additionally, a menu page has been created allowing for the user to select what they want to do being check the stock, output a receipt, add a new order and also view existing orders.
 - We opted to use an SQLlite3 database, due to it's easy integration with the rest of our system. This database was modified automatically through python with the flask module, which takes inputs from our javascript.
 - This approach came after we scrapped using a csv-pandas approach, as a large csv file can sometimes prove challenging for scalebility, and increase perforance overhead.
+- For a simplistic gui to show sql queries in the python stock app, we used Tkinter.
   
 
