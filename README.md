@@ -29,5 +29,5 @@ Task Delegation:
 
 Development phase:
 - So far during the development phase I have created different functions in the python application to allow for a log in system in order to access the menu page where employees' usernames and passwords can be added when more employees are able to use it. Additionally, a menu page has been created allowing for the user to select what they want to do being check the stock, output a receipt, add a new order and also view existing orders.
-- We opted to use an SQLlite3 database, due to it's easy integration with the rest of our system. This database was modified automatically
+- We opted to use an SQLlite3 database, due to it's easy integration with the rest of our system. This database was modified automatically through python with the flask module, which takes inputs from our javascript.
 
