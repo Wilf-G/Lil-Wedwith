@@ -8,7 +8,7 @@ class KitchenApp:
         self.root = root
         self.root.title("Food Inc. Kitchen Management")
         self.root.geometry("1000x600")
-        
+        a
         # UI Styling
         style = ttk.Style()
         style.configure("Treeview", rowheight=30, font=('Arial', 10))
